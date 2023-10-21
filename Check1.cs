@@ -7,20 +7,22 @@ public class Check1 : MonoBehaviour
 {
     public static int key1 = 0;
     public GameObject pass;
-    // public GameObject triggerObject;
+    public GameObject triggerObject;
 
-    public void check(InputField f) {
+    public void check(InputField f)
+    {
         if (f.text == "물병자리")
         {
             key1 = 1;
             print("정답");
-            pass.SetActive(false);
-            // Destroy(triggerObject);
+            Destroy(pass);
+            Destroy(triggerObject);
         }
 
-        else {
+        else
+        {
             print("틀린 답");
-            pass.SetActive(true);
+            pass.SetActive(true); 
         }
     }
 }
