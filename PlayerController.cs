@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Jump();
+        // 플레이어의 y값이 -10보다 작아지면 위치를 변경하는 코드
+        if (transform.position.y < -10)
+            transform.position = new Vector3(-0.31f, 2, 11);
     }
 
     void Move()
