@@ -9,20 +9,51 @@ public class Check1 : MonoBehaviour
     public GameObject pass;
     public GameObject triggerObject;
 
-    public void check(InputField f)
+    // Assuming this is your input field
+    public InputField myInputField;
+
+    void Update()
     {
-        if (f.text == "물병자리")
+        // If the Enter key is pressed
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            // Call the check function to check the answer
+            check();
+        }
+
+        // If the Tab key is pressed
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            // Set the focus to the input field
+            myInputField.Select();
+            myInputField.ActivateInputField();
+        }
+    }
+
+    public void check()
+    {
+        if (myInputField.text == "물병자리")
         {
             key1 = 1;
             print("정답");
             Destroy(pass);
             Destroy(triggerObject);
+
+            // After checking, clear the input field and set focus back to it for next input 
+            myInputField.text = "";
+            myInputField.Select();
+            myInputField.ActivateInputField();
         }
 
         else
         {
             print("틀린 답");
-            pass.SetActive(true); 
+            pass.SetActive(true);
+
+            // If the answer is wrong, clear the input field and set focus back to it for next try 
+            myInputField.text = "";
+            myInputField.Select();
+            myInputField.ActivateInputField();
         }
     }
 }
